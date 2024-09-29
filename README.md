@@ -4,20 +4,11 @@ PepENS is an innovative model that seamlessly integrates sequence and structure-
 ![Architecture](https://github.com/user-attachments/assets/281fe6fb-2834-49c0-8018-f8d4e9099c1f)
 
 # Download and Use
-The codes for Datasets 1 and 2 are found in the respective folders of this repository.  execute the codes, 
-## 1. Load the trained PepCNN model
-   The result obtained in our work can be replicated by executing dataset1_PepCNN.py script for Dataset1, and dataset2_PepCNN.py script for Dataset2. For instance, to obtain the result of PepCNN on dataset1, run the dataset1_PepCNN.py script after downloading the following files by going to this [link](https://figshare.com/projects/Load_protein-peptide_binding_PepCNN_model/176094) (caution: data size is around 1.3GB for each dataset): 
-   - model weights: dataset1_best_model_weights.h5
-   - training set negative samples: dataset1_Train_Negatives_All.dat
-   - training set positive samples: dataset1_Train_Positives.dat
-   - testing set: dataset1_Test_Samples.dat
-## 2. Train the CNN model
-To train the network from scratch, it can be done by executing dataset1_PepCNN_train.py script for Dataset1, and dataset2_PepCNN_train.py script for Dataset2. For instance, to train the network on dataset1, run the dataset1_PepCNN_train.py script after downloading the following files by going to this [link](https://figshare.com/projects/Train_the_CNN_model/176151) (caution: data size is 1.22GB for both datasets): 
-   - testing protein sequences: Dataset1_test.tsv
-   - protein sequences excluding testing sequences: Dataset1_train.tsv
-   - pre-trained transformer embeddings: T5_Features.dat
-   - PSSM features: PSSM_Features.dat
-   - HSE features: HSE_Features.dat
+The codes for Datasets 1 and 2 are found in the respective folders of this repository.      
+## 1. Load the trained PepENS model
+The results obtained in our work can be replicated by executing dataset1_Ensemble.py script for Dataset1, and dataset2_Ensemble.py script for Dataset2. The respective scripts will load the probability files of the individual models and output the final result. 
+## 2. Load individual models
+To obtain the probabilities of the individual models, firstly download the three features from this [link](https://figshare.com/account/home#/projects/176151) (caution: data size is 1.22GB) and then run the scripts containing the word 'load' in the name. In case of the EfficientNetB0 model, the model weights would be needed which can be downloaded from [here](https://figshare.com/articles/software/EfficientNetB0_model_weights/27126339). 
 
 Package versions:
 Python 3.10.12,
