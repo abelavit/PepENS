@@ -5,7 +5,7 @@ PepENS is an innovative model that seamlessly integrates sequence and structure-
 
 # Download and Use
 The codes for Datasets 1 and 2 are found in the respective folders of this repository.      
-## 1. Load the trained PepENS model
+## 1. Load the PepENS model
 The results obtained in our work can be replicated by executing dataset1_Ensemble.py script for Dataset1, and dataset2_Ensemble.py script for Dataset2. The respective scripts will load the probability files of the individual models and output the final result. 
 ## 2. Load individual models
 To obtain the probabilities of the individual models, firstly download the three features from this [link](https://figshare.com/account/home#/projects/176151) (caution: data size is 1.22GB) and then run the scripts containing the word 'load' in the name. In case of the EfficientNetB0 model, the model weights would be needed which can be downloaded from [here](https://figshare.com/articles/software/EfficientNetB0_model_weights/27126339). 
