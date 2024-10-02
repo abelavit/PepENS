@@ -16,6 +16,6 @@ Packages for running other scripts:
 Python 3.10.12,
 Pickle 4.0,
 Numpy 1.25.2,
-scikit-learn 1.2.2,
+Scikit-learn 1.2.2,
 Matplotlib 3.7.2
 
