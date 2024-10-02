@@ -15,8 +15,10 @@ python 3.10.13, numpy 1.23.5, pandas 1.5.3, pickle 4.0, matplotlib 3.8.0, tensor
 
 Packages for running other scripts:
 python 3.10.12,
+pandas 1.5.3,
 pickle 4.0,
 numpy 1.25.2,
 scikit-learn 1.2.2,
+catboost 1.2.5,
 matplotlib 3.7.2
 
