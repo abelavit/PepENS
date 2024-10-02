@@ -11,7 +11,8 @@ The results obtained in our work can be replicated by executing dataset1_Ensembl
 To obtain the probabilities of the individual models, firstly download the three features from this [link](https://figshare.com/account/home#/projects/176151) (caution: data size is 1.22GB) and then run the scripts containing the word 'load' in the name (for instance, run the dataset1_load_CatBoost1.py script to obtain the probabilities of the CatBoost1 model of dataset 1). In case of the EfficientNetB0 model, the model weights would be needed which can be downloaded from [here](https://figshare.com/articles/software/EfficientNetB0_model_weights/27126339). 
 
 Packages for running EfficientNetB0: 
-python 3.10.13, numpy 1.23.5, pandas 1.5.3, pickle 4.0, matplotlib 3.8.0, tensorflow 2.14.0, pyDeepInsight 0.1.1, scikit-learn 1.3.0
+python 3.10.13  
+, numpy 1.23.5, pandas 1.5.3, pickle 4.0, matplotlib 3.8.0, tensorflow 2.14.0, pyDeepInsight 0.1.1, scikit-learn 1.3.0
 
 Packages for running other scripts:
 python 3.10.12,
