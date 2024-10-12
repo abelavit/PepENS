@@ -166,7 +166,7 @@ for i in range(len(DatasetTestProteins)):
         Test_Samples = pd.concat([Test_Samples, A_sample], ignore_index=True, axis=0)
             
                   
-#    print('Test Protein ' + str(i+1) + ' out of ' + str(len(DatasetTestProteins)))
+    print('Test Protein ' + str(i+1) + ' out of ' + str(len(DatasetTestProteins)))
 print('Number of Proteins in Test: ' + str(len(DatasetTestProteins)))
 print('Number of samples in Test: ' + str(len(Test_Samples)))
 
@@ -214,7 +214,7 @@ for i in range(len(DatasetTrainProteins)):
             Train_Negatives_All = pd.concat([Train_Negatives_All, A_sample], ignore_index=True, axis=0)
       
             
-#    print('Train Protein ' + str(i+1) + ' out of ' + str(len(DatasetTrainProteins)))
+    print('Train Protein ' + str(i+1) + ' out of ' + str(len(DatasetTrainProteins)))
 print('Number of Proteins in Train: ' + str(len(DatasetTrainProteins)))
 print('Feature vector size: ' + str(Test_Samples['Feature'][0].shape))
 print('Num of Train Positives: ' + str(len(Train_Positives)))
