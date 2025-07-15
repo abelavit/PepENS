@@ -351,7 +351,7 @@ cnn_model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=2.700747489333
                       metrics=['AUC'])
 
 
-cnn_model.load_weights('B0_dataset2_best_model_weights.h5')
+cnn_model.load_weights('dataset2_B0_model_weights.h5')
 
 eval_result = cnn_model.evaluate(X_test_img, Y_test, verbose=2)
 print(f"test loss: {round(eval_result[0],4)}, test auc: {round(eval_result[1],4)}")
