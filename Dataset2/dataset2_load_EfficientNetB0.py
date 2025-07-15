@@ -7,10 +7,17 @@ Created on Mon Aug 16 10:18:50 2024
 
 import numpy as np
 import pandas as pd
+from sklearn.metrics import roc_auc_score
+from sklearn.metrics import precision_score 
 import warnings
 import pickle
+import copy
 import math
 from matplotlib import pyplot
+from sklearn.metrics import roc_curve
+from sklearn.metrics import confusion_matrix
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import KernelPCA
 warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 import tensorflow as tf
 import tensorflow.keras.layers as tfl
@@ -19,7 +26,7 @@ from pyDeepInsight import ImageTransformer
 from pyDeepInsight.utils import Norm2Scaler
 from sklearn.preprocessing import LabelEncoder
 from sklearn.manifold import TSNE
-
+import joblib
 import warnings; 
 warnings.simplefilter('ignore')
 
@@ -52,9 +59,6 @@ def peptide_feat(window_size, Protein_seq, Feat, j): # funtion to extract peptid
         mirrored = 'No'
         
     return peptide, final_feat, mirrored
-
-
-
 
 # Prepare data
 Dataset_test_tsv = pd.read_table("Dataset2_test.tsv")
@@ -124,6 +128,7 @@ for i in range(len(Dataset_train_tsv)):
 # generate samples for Test protein sequences
 column_names = ['Code','Protein_len','Seq_num','Amino_Acid','Position','Label','Peptide','Mirrored','Feature','Prot_positives']
 Test_Samples = pd.DataFrame(columns = column_names)
+#Test_Negatives = pd.DataFrame(columns = column_names)
 
 Pos_index = 0
 Neg_index = 0
@@ -166,6 +171,8 @@ for i in range(len(DatasetTestProteins)):
     print('Test Protein ' + str(i+1) + ' out of ' + str(len(DatasetTestProteins)))
 print('Number of Proteins in Test: ' + str(len(DatasetTestProteins)))
 print('Number of samples in Test: ' + str(len(Test_Samples)))
+
+#pickle.dump(Test_Samples,open("dataset2_Test_Samples_rerun.dat","wb"))
 
 # generate samples for Train protein sequences
 Train_Positives = pd.DataFrame(columns = column_names)
@@ -216,6 +223,9 @@ print('Number of Proteins in Train: ' + str(len(DatasetTrainProteins)))
 print('Feature vector size: ' + str(Test_Samples['Feature'][0].shape))
 print('Num of Train Positives: ' + str(len(Train_Positives)))
 print('Num of Train Negatives (All): ' + str(len(Train_Negatives_All)))
+#pickle.dump(Train_Positives,open("dataset2_Train_Positives_rerun.dat","wb"))
+#pickle.dump(Train_Negatives_All,open("dataset2_Train_Negatives_All_rerun.dat","wb"))# generate samples for Train protein sequences
+
 
 finetune_from_layer = 1
 print(f"Finetuning from layer {finetune_from_layer}")
@@ -256,8 +266,8 @@ Y_test = y_independent.reshape(y_independent.size,1)
 #X_test = scaler.transform(X_test) # apply standardization (transform) to the test set
 
 # Normalize data using LogScaler and encode classes
-ln = Norm2Scaler()
-X_train_norm = ln.fit_transform(X_train)
+ln = joblib.load("Norm2Scaler2.pkl")
+X_train_norm = ln.transform(X_train)
 X_test_norm = ln.transform(X_test)
 le = LabelEncoder()
 y_train_enc = le.fit_transform(Y_train)
@@ -275,33 +285,11 @@ reducer = TSNE(
     learning_rate='auto',
     n_jobs=-1
 )
-'''
-reducer = umap.UMAP(
-    n_components=2,
-    #min_dist=0.8,
-    metric='cosine',
-    n_jobs=-1
-)
-'''
-'''
-# Create KernelPCA object
-reducer = KernelPCA(
-    n_components=2,
-    random_state=0,
-    kernel='poly',
-    n_jobs=-1
-)
-'''
 
-# Initialize image transformer
 pixel_size = (130,130)
-it = ImageTransformer(
-    feature_extractor=reducer, 
-    discretization='assignment',
-    pixels=pixel_size)
 
 # Train image transformer on training data and transform training and testing sets. Values should be between 0 and 1.
-it.fit(X_train_norm, y=Y_train, plot=True)
+it = joblib.load("image_transformer2.pkl")
 X_train_img = it.transform(X_train_norm)
 X_train_img = np.float16(X_train_img)
 X_test_img = it.transform(X_test_norm)
@@ -313,6 +301,7 @@ pyplot.imshow(X_train_img[0])
 preprocess_input = tf.keras.applications.efficientnet.preprocess_input # reuse the pretrained normalization values MobileNetV2 was trained on
 
 IMG_SHAPE = pixel_size + (3,)
+# Similarly to how you reused the pretrained normalization values resnet50 was trained on, you'll also load the pretrained weights from ImageNet by specifying weights='imagenet'
 base_model = EfficientNetB0(input_shape=IMG_SHAPE, include_top=False, weights='imagenet')
 
 
@@ -362,13 +351,9 @@ cnn_model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=2.700747489333
                       metrics=['AUC'])
 
 
-cnn_model.load_weights('dataset2_B0_model_weights.h5')
+cnn_model.load_weights('B0_dataset2_best_model_weights.h5')
 
 eval_result = cnn_model.evaluate(X_test_img, Y_test, verbose=2)
 print(f"test loss: {round(eval_result[0],4)}, test auc: {round(eval_result[1],4)}")
 
 Inde_test_prob = cnn_model.predict(X_test_img, verbose=2)
-#pickle.dump(Inde_test_prob,open("B0_inde_test_prob.dat","wb"))
-
-
-
