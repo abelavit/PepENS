@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Aug  8 10:18:50 2022
+Created on Fri Aug 22 10:18:50 2025
 
 @author: abelac
 """
@@ -70,7 +70,7 @@ file = open("PSSM_Features_user.dat",'rb')
 Feature3 = pickle.load(file)
 
 
-# generate samples for Test protein sequences
+# generate samples for traditional ML models
 column_names = ['Code','Protein_len','Seq_num','Amino_Acid','Position','Peptide','Feature']
 Samples_classical = pd.DataFrame(columns = column_names)
 
@@ -122,7 +122,7 @@ X_arr = np.float16(X_arr)
 # Load the saved scaler
 with open("Traditional_ML_scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
-X_transformed = scaler.transform(X_arr) # apply standardization (transform) to the test set
+X_transformed = scaler.transform(X_arr) # apply standardization (transform)
 
 
 ################### Logisitc Regression ###################
@@ -159,10 +159,8 @@ CatBoost2_prob = pred_probs[:,1]
 ################### EfficientNetB0 ###################
 
 finetune_from_layer = 1
-#print(f"Finetuning from layer {finetune_from_layer}")
-#print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
-# generate samples for Test protein sequences
+# generate samples for EfficientNetB0 model
 Samples_Deep = pd.DataFrame(columns = column_names)
 
 Pos_index = 0
