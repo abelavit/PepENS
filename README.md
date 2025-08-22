@@ -14,7 +14,7 @@ To obtain the probabilities of the individual models, firstly download the three
 python 3.8.20  
 numpy 1.24.3  
 pandas 1.5.0   
-matplotlib 3.7.5 
+matplotlib 3.7.5   
 tensorflow 2.13.0  
 pyDeepInsight 0.2.0  
 scikit-learn 1.3.2  
