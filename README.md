@@ -16,7 +16,7 @@ numpy 1.24.3
 pandas 1.5.0   
 matplotlib 3.7.5 
 tensorflow 2.13.0  
-pyDeepInsight 0.1.1  
+pyDeepInsight 0.2.0  
 scikit-learn 1.3.2  
 catboost 1.2.5  
 
