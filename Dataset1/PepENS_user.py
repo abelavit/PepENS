@@ -301,8 +301,8 @@ Labels["Prot_seq"] = Feature1["Prot_seq"]
 
 # Output 
 print('')
-print("Protein sequence -> Predicted label")
-for seq, label in zip(Labels["Prot_seq"], Labels["Predicted_label"]):
-    print(f"{seq} -> {label}")
+print("Protein ID | Protein sequence | Predicted label")   
+for name, seq, label in zip(Labels["Prot_name"], Labels["Prot_seq"], Labels["Predicted_label"]):
+    print(f"{name} | {seq} | {label}")
 
 
