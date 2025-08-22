@@ -10,23 +10,14 @@ The results obtained in our work can be replicated by executing dataset1_Ensembl
 ## 2. Load individual models
 To obtain the probabilities of the individual models, firstly download the three features from this [link](https://figshare.com/projects/Train_the_CNN_model/176151) (caution: data size is 1.22GB) and then run the scripts containing the word 'load' in the name (for instance, run the dataset1_load_CatBoost1.py script to obtain the probabilities of the CatBoost1 model of dataset 1). For the EfficientNetB0 model, both the model weights and the corresponding pre-trained objects are required, which can be downloaded from [here](https://figshare.com/articles/software/EfficientNetB0_model_weights/27126339). 
 
-## Packages
-Packages for running EfficientNetB0:  
-python 3.10.13  
-numpy 1.23.5  
-pandas 1.5.3  
-pickle 4.0  
-matplotlib 3.8.0  
-tensorflow 2.14.0  
+## Packages 
+python 3.8.20  
+numpy 1.24.3  
+pandas 1.5.0   
+matplotlib 3.7.5 
+tensorflow 2.13.0  
 pyDeepInsight 0.1.1  
-scikit-learn 1.3.0
-
-Packages for running other scripts:  
-python 3.10.12  
-pandas 1.5.3  
-pickle 4.0  
-numpy 1.25.2  
-scikit-learn 1.2.2  
+scikit-learn 1.3.2  
 catboost 1.2.5  
-matplotlib 3.7.2
+
 
