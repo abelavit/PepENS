@@ -8,7 +8,7 @@ The codes for Datasets 1 and 2 are found in the respective folders of this repos
 ## 1. Load the PepENS model
 The results obtained in our work can be replicated by executing dataset1_Ensemble.py script for Dataset1, and dataset2_Ensemble.py script for Dataset2. The respective scripts will load the probability files of the individual models and output the final result. 
 ## 2. Load individual models
-To obtain the probabilities of the individual models, firstly download the three features from this [link](https://figshare.com/projects/Train_the_CNN_model/176151) (caution: data size is 1.22GB) and then run the scripts containing the word 'load' in the name (for instance, run the dataset1_load_CatBoost1.py script to obtain the probabilities of the CatBoost1 model of dataset 1). For the EfficientNetB0 model, both the model weights and the corresponding pre-trained objects are required, which can be downloaded from [here](https://figshare.com/articles/software/EfficientNetB0_model_weights/27126339). 
+To obtain the probabilities of the individual models, firstly download the three features from this [link](https://figshare.com/projects/Train_the_CNN_model/176151) (caution: data size is 1.22GB) and then run the scripts containing the word 'load' in the name (for instance, run the dataset1_load_CatBoost1.py script to obtain the probabilities of the CatBoost1 model of dataset 1). For the EfficientNetB0 model, model weights is required, which can be downloaded from [here](https://figshare.com/articles/software/EfficientNetB0_model_weights/27126339). 
 
 ## Packages 
 python 3.8.20  
