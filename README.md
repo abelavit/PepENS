@@ -1,8 +1,7 @@
 # PepENS
 PepENS is an innovative model that seamlessly integrates sequence and structure-based information with ensemble learning. It represents a pioneering, consensus-based method by combining embeddings from ProtT5-XL-UniRef50 with Position Specific Scoring Matrices and Half-Sphere Exposure features to train an ensemble model consisting of EfficientNetB0 via image output from DeepInsight technology, CatBoost, and Logistic Regression. To the best of our knowledge, this is the first time representations learnt using attention mechanism in transformers are transformed into images to utilize the potential of Convolutional Neural Networks in protein-peptide prediction. The spatial relationships formed between the features by DeepInsight to produce images and the feature extraction from those images by the Convolutional Neural Network play a key role in the performance of the ensemble model. Extensive evaluations demonstrate that PepENS establishes a new benchmark, surpassing existing methods. Superior predictive performance of PepENS redefines computational approaches and holds the potential to accelerate drug discovery, deepen our understanding of disease mechanisms, and inspire new computational strategies in bioinformatics.
 
-![Architecture.pdf](https://github.com/user-attachments/files/22086345/Architecture.pdf)
-
+<img width="732" height="1117" alt="Architecture" src="https://github.com/user-attachments/assets/56d92918-7d02-4a69-b8d5-6d4a5220b147" />
 
 # Download and Use
 The codes for Datasets 1 and 2 are found in the respective folders of this repository.      
